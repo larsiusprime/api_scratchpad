@@ -3,9 +3,22 @@
 * Primitives for use in Openfl.Capabilities (screen resolution, dpi, etc)
 * Pave the way for true multi monitor support
 
-#Things:
+#Top Level:
 
-* `Array<DisplayObject>`: Enumerate all displays currently connected. Has following information for every display (as available):
+ | TYPE   | name            | description |
+ |--------|-----------------|-------------|
+ |`Array<DisplayObject>`| displays | Enumerate all displays currently connected|
+ |
+
+  ###Basic stuff
+  
+  | TYPE   | name            | description |
+  |--------|-----------------|-------------|
+  | `Bool` | isActive        | is this device currently powered on and displaying stuff |
+  | `Bool` | isPrimary       | is this the "primary" display device |
+  | `Int`  | id              | which "number" display device is this according to the OS |
+  | `Int`  | displayOrder    | where does the OS think this display "goes", in a set of displays arranged from left-right, top-bottom? |
+  
 
   ###Physical characteristics
   
@@ -14,7 +27,6 @@
   | `Vec2` | resolution  | Width / Height of the display area, in inches and/or centimeters |
   | `Float`| aspectRatio | Aspect Ratio (4x3 = 1.3333, 16x9 = 1.7777) |
   | `Enum` | orienation  | Orientation ("Portrait", "Lanscape", "Square"), if applicable. |
-  
   
   ###CURRENT settings
   
