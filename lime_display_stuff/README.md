@@ -9,6 +9,8 @@ TYPE   | name            | description
 -------|-----------------|-------------
  `Array<DisplayObject>` | displays | Enumerate all displays currently connected 
  
+##DisplayObject properties:
+ 
 ###Basic stuff
   
  TYPE   | name            | description 
@@ -17,7 +19,7 @@ TYPE   | name            | description
  `Bool` | isPrimary       | is this the "primary" display device
  `Int`  | id              | which "number" display device is this according to the OS
  `Int`  | displayOrder    | where does the OS think this display "goes", arranging left-to-right? (or top/bottom for say 3DS)
- `Vec2` | displayCoord    | in case you've got an extremely fancy setup, accounts for horizontal AND vertical
+ `Vec2` | displayPosition | in case you've got an extremely fancy setup, accounts for horizontal AND vertical
 
 ###Physical characteristics
  
