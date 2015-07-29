@@ -3,6 +3,12 @@
 * Primitives for use in Openfl.Capabilities (screen resolution, dpi, etc)
 * Pave the way for true multi monitor support
 
+#Package:
+
+lime.display
+
+---------------------
+
 ##Top Level:
 
 TYPE   | name            | description 
@@ -55,9 +61,5 @@ TYPE   | name
 `Bool` | hasMultiTouch
 `Bool` | hasTouchPressure
 `Bool` | hasStereoscopic3D
-
-#Package:
-
-### lime.display
 
 
