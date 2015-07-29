@@ -8,8 +8,7 @@
  | TYPE   | name            | description |
  |--------|-----------------|-------------|
  |`Array<DisplayObject>`| displays | Enumerate all displays currently connected|
- |
-
+ 
   ###Basic stuff
   
   | TYPE   | name            | description |
