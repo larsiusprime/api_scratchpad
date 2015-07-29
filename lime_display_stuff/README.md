@@ -53,11 +53,13 @@ TYPE   | name            | description
   
 ###SPECIAL characteristics connected to the display
   
-TYPE   | name            
--------|----------------
-`Bool` | hasSingleTouch
-`Bool` | hasMultiTouch
-`Bool` | hasTouchPressure
-`Bool` | hasStereoscopic3D
+TYPE   | name           | description
+-------|----------------|-----------------
+`Bool` | hasSingleTouch          | anything with at least one touch point, from cintiq to iOS to 3DS to wiiU |
+`Bool` | hasMultiTouch           | anything with at least two touch points
+`Bool` | hasTouchPressure        | if true, touch pressure is analog 0.0-1.0, if false, touch is binary
+`Bool` | hasStereoscopic3D       | supports 3DS or Occulus-Rift style 3D, two output buffers in one device
+`Bool` | stereoscopic3DisActive  | is the 3D on right now
+`Float` | streoscopic3DSlider    | how strong is the 3D effect? (3DS slider, etc)
 
 
