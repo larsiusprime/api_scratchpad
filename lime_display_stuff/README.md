@@ -21,11 +21,12 @@ TYPE   | name            | description
 
 ###Physical characteristics
  
-  TYPE   | name        | description 
- --------|-------------|-------------
-  `Vec2` | resolution  | Width / Height of the display area, in inches and/or centimeters 
-  `Float`| aspectRatio | Aspect Ratio (4x3 = 1.3333, 16x9 = 1.7777) 
-  `Enum` | orienation  | Orientation ("Portrait", "Lanscape", "Square"), if applicable. 
+  TYPE   | name         | description 
+ --------|--------------|-------------
+  `Vec2` | physicalSize | Width / Height of the display area, in inches and/or centimeters 
+  `Float`| aspectRatio  | Aspect Ratio (4x3 = 1.3333, 16x9 = 1.7777) 
+  `Enum` | orienation   | Orientation ("Portrait", "Lanscape", "Square"), if applicable. 
+  `Vec2` | nativeResolution | For LCD monitors, etc, the resolution where everything is 1:1 and perfectly crisp
   
 ###CURRENT settings
   
