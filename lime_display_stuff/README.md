@@ -9,7 +9,7 @@
 
   * **Physical characteristics**:
     *  2x `Float` Width / Height of the display area, in inches and/or centimeters
-    *  1x `Float` Aspect Ratio (4x3, 16x9)
+    *  1x `Float` Aspect Ratio (4x3 = 1.3333, 16x9 = 1.7777)
     *  1x `Enum`  Orientation ("Portrait", "Lanscape", "Square"), if applicable.
     
   * **CURRENT settings**:
@@ -21,7 +21,13 @@
     
   * **SUPPORTED settings**:
     *  `Array<Vector2>` List of screen resolutions (simple width x height)
-    *  `Array<ScreenMode>` List of explicitly supported screen MODES (screen resolution + color mode + refresh rate + DPI(?) )
+    *  `Array<ScreenMode>` List of explicitly supported screen MODES (screen resolution + color mode + refresh rate + DPI(?)
+     
+  * **SPECIAL characteristics connected to the display**:
+    * 1x `Bool` hasSingleTouch
+    * 1x `Bool` hasMultiTouch
+    * 1x `Bool` hasTouchPressure
+    * 1x `Bool` hasStereoscopic3D
 
 #Package:
 
