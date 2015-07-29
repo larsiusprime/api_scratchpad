@@ -19,11 +19,13 @@ TYPE   | name            | description
   
  TYPE   | name            | description 
  -------|-----------------|-------------
+ `String` | name          | name of the device e.g. "Samsung SyncMaster P2350", "Occulus Rift DK2", "3DS top screen", etc
  `Bool` | isActive        | is this device currently powered on and displaying stuff
  `Bool` | isPrimary       | is this the "primary" display device
  `Int`  | id              | which "number" display device is this according to the OS
  `Int`  | displayOrder    | where does the OS think this display "goes", arranging left-to-right? (or top/bottom for say 3DS)
  `Vec2` | displayPosition | in case you've got an extremely fancy setup, accounts for horizontal AND vertical
+ `Object` | EDID | Raw EDID data? [link](https://en.wikipedia.org/wiki/Extended_Display_Identification_Data)
 
 ###Physical characteristics
  
