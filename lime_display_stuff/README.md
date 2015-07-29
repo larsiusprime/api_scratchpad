@@ -3,10 +3,9 @@
 * Primitives for use in Openfl.Capabilities (screen resolution, dpi, etc)
 * Pave the way for true multi monitor support
 
-#Things to support:
+#Things:
 
-* Enumerate all displays currently connected
-* Provide following information for every display (as available):
+* Array<DisplayObject>: Enumerate all displays currently connected. Has following information for every display (as available):
 
   * PHYSICAL CHARACTERISTICS:
     *  2x Float: Width / Height of the display area, in inches and/or centimeters
