@@ -7,7 +7,7 @@
 
  | TYPE   | name            | description |
  |--------|-----------------|-------------|
- |`Array<DisplayObject>`| displays | Enumerate all displays currently connected|
+ |`Array<DisplayObject>`| displays | Enumerate all displays currently connected |
  
   ###Basic stuff
   
