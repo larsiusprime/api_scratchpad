@@ -7,7 +7,7 @@
 
 * `Array<DisplayObject>`: Enumerate all displays currently connected. Has following information for every display (as available):
 
-  * * *Physical characteristics**:
+  * **Physical characteristics**:
     *  2x `Float` Width / Height of the display area, in inches and/or centimeters
     *  1x `Float` Aspect Ratio (4x3, 16x9)
     *  1x `Enum`  Orientation ("Portrait", "Lanscape", "Square"), if applicable.
