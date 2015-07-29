@@ -8,26 +8,26 @@
 * `Array<DisplayObject>`: Enumerate all displays currently connected. Has following information for every display (as available):
 
   * **Physical characteristics**:
-    *  2x `Float` Width / Height of the display area, in inches and/or centimeters
-    *  1x `Float` Aspect Ratio (4x3 = 1.3333, 16x9 = 1.7777)
-    *  1x `Enum`  Orientation ("Portrait", "Lanscape", "Square"), if applicable.
+    * `Vec2` Width / Height of the display area, in inches and/or centimeters
+    * `Float` Aspect Ratio (4x3 = 1.3333, 16x9 = 1.7777)
+    * `Enum`  Orientation ("Portrait", "Lanscape", "Square"), if applicable.
     
   * **CURRENT settings**:
-    *  2x `Float` Screen resolution (width x height), in pixels
-    *  1x `Int`(?) Screen DPI or equivalent metric
-    *  1x `Enum` Color mode (24-bit vs 32-bit) --> is this still important? I think it probably is...
-    *  1x `Int`(?) Refresh rate (in Hz)
-    *  1x `ScreenMode` All of the above bundled into an object
+    * `Vec2` Screen resolution (width x height), in pixels
+    * `Int`(?) Screen DPI or equivalent metric
+    * `Enum` Color mode (24-bit vs 32-bit) --> is this still important? I think it probably is...
+    * `Int`(?) Refresh rate (in Hz)
+    * `ScreenMode` All of the above bundled into an object
     
   * **SUPPORTED settings**:
-    *  `Array<Vector2>` List of screen resolutions (simple width x height)
-    *  `Array<ScreenMode>` List of explicitly supported screen MODES (screen resolution + color mode + refresh rate + DPI(?)
+    * `Array<Vec2>` List of screen resolutions (simple width x height)
+    * `Array<ScreenMode>` List of explicitly supported screen MODES (screen resolution + color mode + refresh rate + DPI(?)
      
   * **SPECIAL characteristics connected to the display**:
-    * 1x `Bool` hasSingleTouch
-    * 1x `Bool` hasMultiTouch
-    * 1x `Bool` hasTouchPressure
-    * 1x `Bool` hasStereoscopic3D
+    * `Bool` hasSingleTouch
+    * `Bool` hasMultiTouch
+    * `Bool` hasTouchPressure
+    * `Bool` hasStereoscopic3D
 
 #Package:
 
