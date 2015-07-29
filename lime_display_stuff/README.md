@@ -11,9 +11,9 @@
 
 TYPE   | name            | description 
 -------|-----------------|-------------
- `Array<DisplayObject>` | displays | Enumerate all displays currently connected 
+ `Array<DisplayDevice>` | displays | Enumerate all displays currently connected 
  
-##DisplayObject properties:
+##DisplayDevice properties:
  
 ###Basic stuff
   
