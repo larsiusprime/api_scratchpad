@@ -7,7 +7,7 @@
 
 * `Array<DisplayObject>`: Enumerate all displays currently connected. Has following information for every display (as available):
 
-  **Physical characteristics**
+  ###Physical characteristics
   
   | TYPE   | name            | description |
   |--------|-----------------|-------------|
@@ -16,7 +16,7 @@
   | `Enum` | **orienation**  | Orientation ("Portrait", "Lanscape", "Square"), if applicable. |
   
   
-  **CURRENT settings*
+  ###CURRENT settings
   
   | TYPE   | name            | description |
   |--------|-----------------|-------------|
@@ -26,14 +26,14 @@
   | `Int`(?) | **refreshRate** | Refresh rate (in Hz) |
   | `DisplayMode` | **displayMode** | All of the above bundled into an object |
   
-  **SUPPORTED settings**
+  ###SUPPORTED settings
   
   | TYPE   | name            | description |
   |--------|-----------------|-------------|
   | `Array<Vec2>` | **resolutions** | List of screen resolutions (simple width x height) |
   | `Array<DisplayMode>` | **displayModes** | List of explicitly supported display MODES (screen resolution + color mode + refresh rate + DPI(?)
   
-  **SPECIAL characteristics connected to the display**
+  ###SPECIAL characteristics connected to the display
   
   | TYPE   | name            |
   |--------|-----------------|
