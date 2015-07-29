@@ -16,8 +16,7 @@ TYPE   | name            | description
  `Bool` | isActive        | is this device currently powered on and displaying stuff
  `Bool` | isPrimary       | is this the "primary" display device
  `Int`  | id              | which "number" display device is this according to the OS
- `Int`  | displayOrder    | where does the OS think this display "goes"
-  
+ `Int`  | displayOrder    | where does the OS think this display "goes", arranging left-to-right, top-to-bottom?
 
 ###Physical characteristics
  
