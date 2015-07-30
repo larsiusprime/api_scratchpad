@@ -102,7 +102,7 @@ class DisplayDevice {
 	/**Number of horizontal and vertical pixels currently being displayed**/
 	public var resolution(default, null):Vector2;
 	
-	public function new(name:String, id:Int) {
+	private function new(name:String, id:Int) {
 		
 		this.name = name;
 		this.id = id;
