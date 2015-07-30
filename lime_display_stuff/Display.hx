@@ -5,12 +5,12 @@ import lime.math.Vector2;
  * ...
  * @author larsiusprime
  */
-class DisplayDevice {
+class Display {
 
 	/**STATIC**/
 	
 	public static var numDisplays(get, null):Int;
-	public static var primaryDisplay(get, null):DisplayDevice;
+	public static var primaryDisplay(get, null):Display;
 	
 	/**
 	 * Sync with the OS to get the current display device information
@@ -21,7 +21,7 @@ class DisplayDevice {
 		//TODO: 
 		//just a stub for now:
 		__displays = [];
-		__displays.push(new DisplayDevice("fake_device", 0));
+		__displays.push(new Display("fake_device", 0));
 		
 		for (d in __displays) {
 		
@@ -59,7 +59,7 @@ class DisplayDevice {
 	 * @return
 	 */
 	
-	public static function get(id:Int):DisplayDevice {
+	public static function get(id:Int):Display {
 		
 		if (__displays == null) {
 			
@@ -73,14 +73,14 @@ class DisplayDevice {
 		
 	}
 	
-	public static function getAll():Array<DisplayDevice> {
+	public static function getAll():Array<Display> {
 		
-		//TODO: do I need to clone the DisplayDevices themselves or is that overkill?
+		//TODO: do I need to clone the Displays themselves or is that overkill?
 		return __displays.copy();
 		
 	}
 	
-	private static var __displays:Array<DisplayDevice>;
+	private static var __displays:Array<Display>;
 	
 	/**INSTANCE**/
 	
