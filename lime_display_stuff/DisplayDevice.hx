@@ -123,7 +123,7 @@ class DisplayDevice {
 	private function get_isActive():Bool {
 		
 		//TODO: poll SDL or whatever and check that this display is in fact active right now
-		return false;
+		return true;
 		
 	}
 	
