@@ -1,5 +1,6 @@
 package lime.system;
 import lime.math.Vector2;
+import lime.system.Display;
 
 /**
  * ...
@@ -18,23 +19,16 @@ class Display {
 	 * Sync with the OS to get the current display device information
 	 */
 	
-	public static function syncDisplays():Void {
+	public static function init():Void {
 		
-		//TODO: 
-		//just a stub for now:
-		
-		devices.set(new Display("fake", 0);
-		
-		for (key in devices.keys()) {
-		
-			var d = devices.get(key);
-			if (d != null) {
-				
-				d.sync();
-				
-			}
+		for (i in 0...numDisplays) {
+			
+			var d = new Display(i);
+			d.sync();
+			devices.set(d);
 			
 		}
+		
 	}
 	
 	/**
@@ -68,9 +62,6 @@ class Display {
 	/**The name of the device, such as "Samsung SyncMaster P2350", "iPhone 6", "Occulus Rift DK2", etc.**/
 	public var name (default, null):String;
 	
-	/**Which (left-to-right) position the OS thinks this display is at**/
-	//public var displayOrder(default, null):Int;
-	
 	/**Horizontal resolution / Vertical resolution**/
 	public var aspectRatio(get, null):Float;
 	
@@ -103,12 +94,12 @@ class Display {
 		
 		modes = [];
 		var numModes = lime_display_get_num_display_modes(id);
+		
 		for (i in 0...numModes) {
 			
 			modes.push(lime_display_get_display_mode(id, i));
 			
 		}
-		
 	}
 	
 	/**GET / SET**/
