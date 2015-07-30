@@ -9,6 +9,8 @@ class Display {
 
 	/**STATIC**/
 	
+	public static var devices = new Map<Int, Display> ();
+	
 	public static var numDisplays(get, null):Int;
 	public static var primaryDisplay(get, null):Display;
 	
@@ -20,12 +22,17 @@ class Display {
 		
 		//TODO: 
 		//just a stub for now:
-		__displays = [];
-		__displays.push(new Display("fake_device", 0));
 		
-		for (d in __displays) {
+		devices.set(new Display("fake", 0);
 		
-			d.sync();
+		for (key in devices.keys()) {
+		
+			var d = devices.get(key);
+			if (d != null) {
+				
+				d.sync();
+				
+			}
 			
 		}
 	}
@@ -37,19 +44,7 @@ class Display {
 	
 	public static function get_numDisplays():Int {
 		
-		if (__displays == null) {
-			
-			sync();
-			
-		}
-		
-		if (__displays != null) {
-			
-			return __displays.length;
-			
-		}
-		
-		return 0;
+		return lime_display_get_num_video_displays();
 		
 	}
 	
@@ -61,54 +56,35 @@ class Display {
 	
 	public static function get(id:Int):Display {
 		
-		if (__displays == null) {
-			
-			sync();
-			
-		}
-		
-		if (__displays == null || __displays.length == 0 || id < 0 || id >= __displays.length) return null;
-		
-		return __displays[id];
+		return devices.get(id);
 		
 	}
-	
-	public static function getAll():Array<Display> {
-		
-		//TODO: do I need to clone the Displays themselves or is that overkill?
-		return __displays.copy();
-		
-	}
-	
-	private static var __displays:Array<Display>;
 	
 	/**INSTANCE**/
 	
-	/**The name of the device, such as "Samsung SyncMaster P2350", "iPhone 6", "Occulus Rift DK2", etc.**/
-	public var name(default, null):String;
-	
 	/**Which number is assigned to the display device by the OS**/
-	public var id(default, null):Int;
+	public var id (default, null):Int;
 	
-	/**Whether this device is currently powered on and displaying visuals**/
-	public var isActive(default, null):Bool;
+	/**The name of the device, such as "Samsung SyncMaster P2350", "iPhone 6", "Occulus Rift DK2", etc.**/
+	public var name (get, never):String;
 	
 	/**Which (left-to-right) position the OS thinks this display is at**/
-	public var displayOrder(default, null):Int;
+	//public var displayOrder(default, null):Int;
 	
 	/**Horizontal resolution / Vertical resolution**/
 	public var aspectRatio(get, null):Float;
 	
 	/**Number of horizontal and vertical pixels currently being displayed**/
-	public var resolution(default, null):ConstVector2;
+	public var resolution(get, null):ConstVector2;
 	
-	private function new(name:String, id:Int) {
+	/**The current display mode**/
+	public var mode:DisplayMode;
+	
+	public var modes(default, null):Array<DisplayMode>;
+	
+	private function new(id:Int) {
 		
-		this.name = name;
 		this.id = id;
-		
-		resolution = new Vector2();
-		
 		sync();
 	}
 	
@@ -118,12 +94,19 @@ class Display {
 	 */
 	public function sync():Void {
 		
-		//TODO: stub values for now
-		resolution.x = 1024;
-		resolution.y = 768;
+		name = lime_display_get_name(id);
 		
-		isActive = true;
-		displayOrder = 0;
+		mode = lime_display_get_current_display_mode(id);
+		
+		resolution = new ConstVector2(mode.width, mode.height);
+		
+		modes = [];
+		var numModes = lime_display_get_num_display_modes(id);
+		for (i in 0...numModes) {
+			
+			modes.push(lime_display_get_display_mode(id, i));
+			
+		}
 		
 	}
 	
@@ -140,10 +123,44 @@ class Display {
 		return 0;
 	}
 	
+	@:noCompletion private inline function get_name ():String {
+		
+		#if (cpp || neko || nodejs)
+		return lime_display_get_name (this.id);
+		#else
+		return null;
+		#end
+		
+	}
 }
 
-abstract ConstVector2 (Vector2) from Vector2
-{
+class DisplayMode {
+	
+	/**horizontal resolution**/
+	public var width(default, null):Int;
+	
+	/**vertical resolution**/
+	public var height(default, null):Int;
+	
+	/**refresh rate in Hz**/
+	public var refreshRate(default, null):Int;
+	
+	/**pixel color format**/
+	public var format(default, null):Int;
+	
+	public function new(width:Int, height:Int, refreshRate:Int, format:Int) {
+		
+		this.width = width;
+		this.height = height;
+		this.refreshRate = refreshRate;
+		this.format = format;
+		
+	}
+	
+}
+
+abstract ConstVector2 (Vector2) from Vector2 {
+	
 	public inline function new (x:Float = 0, y:Float = 0) this = new Vector2(x, y);
 	
 	public var x(get, never):Float;
@@ -151,4 +168,36 @@ abstract ConstVector2 (Vector2) from Vector2
 	
 	inline function get_x ():Float return this.x;
 	inline function get_y ():Float return this.y;
+	
 }
+
+// Native Methods (stubs)
+	
+	#if (cpp || neko || nodejs)
+	private static var lime_display_get_num_video_displays = function():Int { 
+		return 1;
+	};
+	private static var lime_display_get_name = function(i:Int) { 
+		return "fake"; 
+	};
+	private static var lime_display_get_num_display_modes = function(i:Int) { 
+		return 1; 
+	};
+	private static var lime_display_get_display_mode = function(display:Int, mode:Int):DisplayMode {
+		return new DisplayMode(1024, 768, 60, 0);
+	};
+	private static var lime_display_get_current_display_mode = function(display:Int):DisplayMode {
+		return new DisplayMode(1024, 768, 60, 0);
+	};
+	#end
+	
+	/*
+	#if (cpp || neko || nodejs)
+	private static var lime_display_get_num_video_displays = System.load("lime", "lime_display_get_num_video_displays", 0);
+	
+	private static var lime_display_get_name = System.load ("lime", "lime_display_get_name", 1);
+	private static var lime_display_get_num_display_modes = System.load ("lime", "lime_display_get_num_display_modes", 1);
+	private static var lime_display_get_display_mode = System.load ("lime", "lime_display_get_display_mode", 2);
+	private static var lime_display_get_current_display_mode = System.load ("lime", "lime_display_get_current_display_mode", 1);
+	#end
+	*/
