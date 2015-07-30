@@ -66,7 +66,7 @@ class Display {
 	public var id (default, null):Int;
 	
 	/**The name of the device, such as "Samsung SyncMaster P2350", "iPhone 6", "Occulus Rift DK2", etc.**/
-	public var name (get, never):String;
+	public var name (default, null):String;
 	
 	/**Which (left-to-right) position the OS thinks this display is at**/
 	//public var displayOrder(default, null):Int;
@@ -86,6 +86,7 @@ class Display {
 		
 		this.id = id;
 		sync();
+		
 	}
 	
 	
@@ -123,15 +124,6 @@ class Display {
 		return 0;
 	}
 	
-	@:noCompletion private inline function get_name ():String {
-		
-		#if (cpp || neko || nodejs)
-		return lime_display_get_name (this.id);
-		#else
-		return null;
-		#end
-		
-	}
 }
 
 class DisplayMode {
