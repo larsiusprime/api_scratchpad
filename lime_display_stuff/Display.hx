@@ -8,12 +8,10 @@ import lime.system.Display;
  */
 class Display {
 
-	/**STATIC**/
+	/********STATIC*********/
 	
 	public static var devices = new Map<Int, Display> ();
-	
 	public static var numDisplays(get, null):Int;
-	public static var primaryDisplay(get, null):Display;
 	
 	/**
 	 * Sync with the OS to get the current display device information
@@ -25,7 +23,7 @@ class Display {
 			
 			var d = new Display(i);
 			d.sync();
-			devices.set(d);
+			devices.set(i, d);
 			
 		}
 		
@@ -54,7 +52,9 @@ class Display {
 		
 	}
 	
-	/**INSTANCE**/
+	
+	/*********INSTANCE**********/
+	
 	
 	/**Which number is assigned to the display device by the OS**/
 	public var id (default, null):Int;
