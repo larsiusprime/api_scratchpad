@@ -37,8 +37,19 @@ class DisplayDevice {
 	
 	public static function get_numDisplays():Int {
 		
-		//TODO: poll SDL or whatever and see how many displays we have
-		return 1;
+		if (__displays == null) {
+			
+			synch();
+			
+		}
+		
+		if (__displays != null) {
+			
+			return __displays.length;
+			
+		}
+		
+		return 0;
 		
 	}
 	
@@ -49,6 +60,12 @@ class DisplayDevice {
 	 */
 	
 	public static function get(id:Int):DisplayDevice {
+		
+		if (__displays == null) {
+			
+			synch();
+			
+		}
 		
 		if (__displays == null || __displays.length == 0 || id < 0 || id >= __displays.length) return null;
 		
