@@ -78,7 +78,7 @@ class Display {
 	public var resolution(get, null):ConstVector2;
 	
 	/**The current display mode**/
-	public var mode:DisplayMode;
+	public var mode(default, null):DisplayMode;
 	
 	public var modes(default, null):Array<DisplayMode>;
 	
