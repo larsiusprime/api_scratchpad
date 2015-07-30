@@ -3,7 +3,7 @@
 * Primitives for use in Openfl.Capabilities (screen resolution, dpi, etc)
 * Pave the way for true multi monitor support
 
-**Package:** lime.display
+**Package:** lime.system
 
 ---------------------
 
@@ -11,7 +11,10 @@
 
 TYPE   | name            | description 
 -------|-----------------|-------------
- `Array<DisplayDevice>` | displays | Enumerate all displays currently connected 
+ `Int` | numDisplays | the number of connected displays
+ `DisplayDevice` | primaryDisplay | the "primary" display device
+ `Int->DisplayDevice` | get | gets the display device at the given index
+ `Array<DisplayDevice>` | getAll | Enumerate all displays currently connected 
  
 ##DisplayDevice properties:
  
