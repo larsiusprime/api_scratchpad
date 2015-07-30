@@ -91,16 +91,16 @@ class DisplayDevice {
 	public var id(default, null):Int;
 	
 	/**Whether this device is currently powered on and displaying visuals**/
-	public var isActive(get, null):Bool;
+	public var isActive(default, null):Bool;
 	
 	/**Which (left-to-right) position the OS thinks this display is at**/
-	public var displayOrder(get, null):Int;
+	public var displayOrder(default, null):Int;
 	
 	/**Horizontal resolution / Vertical resolution**/
 	public var aspectRatio(get, null):Float;
 	
 	/**Number of horizontal and vertical pixels currently being displayed**/
-	public var resolution(default, null):Vector2;
+	public var resolution(default, null):ConstVector2;
 	
 	private function new(name:String, id:Int) {
 		
@@ -122,6 +122,9 @@ class DisplayDevice {
 		resolution.x = 1024;
 		resolution.y = 768;
 		
+		isActive = true;
+		displayOrder = 0;
+		
 	}
 	
 	/**GET / SET**/
@@ -137,17 +140,15 @@ class DisplayDevice {
 		return 0;
 	}
 	
-	private function get_isActive():Bool {
-		
-		//TODO: poll SDL or whatever and check that this display is in fact active right now
-		return true;
-		
-	}
+}
+
+abstract ConstVector2 (Vector2) from Vector2
+{
+	public inline function new (x:Float = 0, y:Float = 0) this = new Vector2(x, y);
 	
-	private function get_displayOrder():Int {
-		
-		//TODO: poll SDL or whatever and check the current display order of this device
-		return 0;
-		
-	}
+	public var x(get, never):Float;
+	public var y(get, never):Float;
+	
+	inline function get_x ():Float return this.x;
+	inline function get_y ():Float return this.y;
 }
