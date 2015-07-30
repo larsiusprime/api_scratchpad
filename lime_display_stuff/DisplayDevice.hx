@@ -13,10 +13,10 @@ class DisplayDevice {
 	public static var primaryDisplay(get, null):DisplayDevice;
 	
 	/**
-	 * Synch with the OS to get the current display device information
+	 * Sync with the OS to get the current display device information
 	 */
 	
-	public static function synchDisplays():Void {
+	public static function syncDisplays():Void {
 		
 		//TODO: 
 		//just a stub for now:
@@ -25,7 +25,7 @@ class DisplayDevice {
 		
 		for (d in __displays) {
 		
-			d.synch();
+			d.sync();
 			
 		}
 	}
@@ -39,7 +39,7 @@ class DisplayDevice {
 		
 		if (__displays == null) {
 			
-			synch();
+			sync();
 			
 		}
 		
@@ -63,7 +63,7 @@ class DisplayDevice {
 		
 		if (__displays == null) {
 			
-			synch();
+			sync();
 			
 		}
 		
@@ -109,14 +109,14 @@ class DisplayDevice {
 		
 		resolution = new Vector2();
 		
-		synch();
+		sync();
 	}
 	
 	
 	/**
 	 * Updates this object's data with the latest information from the OS about the device
 	 */
-	public function synch():Void {
+	public function sync():Void {
 		
 		//TODO: stub values for now
 		resolution.x = 1024;
